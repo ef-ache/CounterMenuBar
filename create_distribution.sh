@@ -4,7 +4,7 @@
 # Run this after building the app in Xcode (Product → Archive → Export)
 
 APP_NAME="CounterMenuBar"
-VERSION="1.0.0"  # Update this with your version
+VERSION="1.1.0"  # Update this with your version
 
 echo "Creating distribution for $APP_NAME v$VERSION"
 
