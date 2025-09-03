@@ -1,14 +1,15 @@
 cask "countermenubar" do
   version "1.0.0"
-  sha256 "50029484b4128fd8cf3027a3463ec4843f04ee9148fe19cadf0b7fbc5ed5bf4a" # Replace with actual SHA256 from create_distribution.sh
+  sha256 "d979cf5140b0f3b40a8bc0bd5fe36ca7b86ac03fa8e0bf3c7e129315d11de592" # Replace with actual SHA256
 
-  url "https://github.com/ef-ache/CounterMenuBar/releases/download/v#{version}/CounterMenuBar-#{version}.dmg"
+  # For local testing - replace with file:// path to your DMG
+  url "file:///Users/francoishameau/code/mac-extension/CounterMenuBar-#{version}.dmg"
   name "CounterMenuBar"
   desc "Simple menu bar counter app with email generation"
   homepage "https://github.com/ef-ache/CounterMenuBar"
 
   auto_updates false
-  depends_on macos: ">= :big_sur" # Adjust based on your minimum macOS version
+  depends_on macos: ">= :big_sur"
 
   app "CounterMenuBar.app"
 
@@ -19,3 +20,4 @@ cask "countermenubar" do
     "~/Library/Application Support/CounterMenuBar",
   ]
 end
+
