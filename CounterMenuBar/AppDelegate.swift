@@ -10,6 +10,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     private var counter: Int = 0 {
         didSet {
             updateStatusItemTitle()
+            UserDefaults.standard.set(counter, forKey: "CounterValue")
+            UserDefaults.standard.synchronize() // Force immediate save
         }
     }
     
@@ -25,6 +27,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     private var configWindow: NSWindow?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        // Load saved counter value before setting up UI
+        counter = UserDefaults.standard.integer(forKey: "CounterValue")
+        
         setupMenuBar()
         setupHotKeys()
         requestNotificationPermissions()
@@ -88,6 +93,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     }
     
     private func updateStatusItemTitle() {
+        guard statusItem != nil else { return }
         statusItem.button?.title = "#email: \(counter)"
     }
     
