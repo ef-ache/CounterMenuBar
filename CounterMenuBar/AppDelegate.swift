@@ -94,6 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     }
     
     private func updateStatusItemTitle() {
+        guard statusItem != nil else { return }
         statusItem.button?.title = "#email: \(counter)"
     }
     
