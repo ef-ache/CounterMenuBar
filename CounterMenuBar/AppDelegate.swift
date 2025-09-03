@@ -10,6 +10,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     private var counter: Int = 0 {
         didSet {
             updateStatusItemTitle()
+            UserDefaults.standard.set(counter, forKey: "CounterValue")
         }
     }
     
@@ -25,9 +26,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     private var configWindow: NSWindow?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        loadCounterValue()
         setupMenuBar()
         setupHotKeys()
         requestNotificationPermissions()
+    }
+    
+    private func loadCounterValue() {
+        counter = UserDefaults.standard.integer(forKey: "CounterValue")
     }
     
     private func setupMenuBar() {
